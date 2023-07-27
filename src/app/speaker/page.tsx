@@ -19,9 +19,9 @@ export default function Page() {
   <div className='grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-4  '>
     {
 
-    user.map((element) => {
+    user.map((element,index) => {
     
-    return (<div className='group relative flex flex-col bg-gray-800 rounded-md my-12 p-4 w-100 mx-auto items-center'>
+    return (<div key={index} className='group relative flex flex-col bg-gray-800 rounded-md my-12 p-4 w-100 mx-auto items-center'>
       <Image alt="speaker1" className='group-hover:scale-50 transition duration-200' src={element.img} width={200} height={300}/>
       <div className='hidden absolute bottom-0 pb-2 text-white group-hover:block transition duration-500'>
       <h1 className='font-extrabold'>{element.name}</h1>

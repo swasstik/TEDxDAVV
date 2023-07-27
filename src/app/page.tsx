@@ -10,7 +10,7 @@ export default function Page(){
   return (
     <div>
     <div className="relative">
-      <Image src={"/home.jpg"} height={2000} width={2000} alt="home" className="h-[calc(100vh-64px)] w-screen"/>
+      <Image src={"/home.jpg"} height={2000} width={2000} alt="home" className="h-[calc(100vh-72px)] w-screen"/>
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">  
         <h1 className="text-8xl text-white tracking-widest">SAGA</h1>
         <h2 className="text-2xl text-white tracking-wide"> Weaving Sprituality</h2>

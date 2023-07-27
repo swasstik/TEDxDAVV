@@ -5,6 +5,7 @@ import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon, Bars3BottomRightIcon } from '@heroicons/react/24/outline'
 import { usePathname } from 'next/navigation';
+import Image from "next/image";
 
 
 
@@ -22,9 +23,10 @@ export default function Navbar()
 
     return (
        // className= "flex flex-row h-20 py-4 px-2 bg-slate-100"
-       <div className="flex bg-gray-800 items-center">
+       <div className="flex bg-gray-800 items-center py-2">
         <div className="flex flex-shrink-0 items-center">
-         <img className="h-16 w-auto ml-6" src="/logo-white.png"/>
+            <Image src={"/logo-white.png"} height={64} width={200} className="ml-6" alt="logo"  />
+         
          </div> 
             <div className="hidden md:ml-auto md:mr-6 md:block ">
                 <div className="flex space-x-4">

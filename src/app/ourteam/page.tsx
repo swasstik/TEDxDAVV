@@ -21,8 +21,8 @@ export default function Page() {
       </div>
       <div className='flex my-12 mx-auto justify-center gap-6'>
        {
-        user.map((item)=>{ 
-          return(<div className='flex flex-row p-4 border rounded-md shadow-xl shadow-cyan-500/50'>
+        user.map((item, index)=>{ 
+          return(<div key={index} className='flex flex-row p-4 border rounded-md shadow-xl shadow-cyan-500/50'>
           <div>
           <Image src={item.src} width={200} height={200} className='aspect-[1/1] rounded-xl object-cover' alt='oc'/>
           </div>
@@ -60,14 +60,14 @@ export default function Page() {
         </div>
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-16 p-16 mx-auto'>
         {
-          user2.map((index)=>{
+          user2.map((gap,index)=>{
             return(
-              <div className="flex justify-center">
+              <div key={index} className="flex justify-center">
           <div className='relative w-52 h-52'>
-            <Image src={index.src} width={170} height={200} className='aspect-[9/12] object-cover' alt='team' />
+            <Image src={gap.src} width={170} height={200} className='aspect-[9/12] object-cover' alt='team' />
             <div className='absolute h-24 w-36 p-2 bg-white -bottom-12 -right-4'> 
-              <h1 className='text-xl font-bold text-red-500'>{index.name}</h1>
-              <h2 className='text-xl font-bold'>{index.position}</h2>
+              <h1 className='text-xl font-bold text-red-500'>{gap.name}</h1>
+              <h2 className='text-xl font-bold'>{gap.position}</h2>
               <h3>Icons</h3>
             </div>
           </div>
