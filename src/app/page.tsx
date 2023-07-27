@@ -21,7 +21,7 @@ export default function Page(){
     </div>
     <div className="bg-black h-screen">
       <div>
-      <Iframe url="http://www.youtube.com/embed/xDMP3i36naA"
+      <Iframe url="https://www.youtube.com/embed/xDMP3i36naA"
             position="absolute"
             width="100%"
             className="h-full"
