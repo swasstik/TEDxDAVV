@@ -1,17 +1,35 @@
+// import React from 'react'
+'use client'
 import React from 'react'
+import { useEffect,useState } from 'react'
 import Image from 'next/image'
 
-export default function Page() {
-  let user = [
-    {src:"/team1.jpg" ,position:"Organiser", name: "Ashutosh Malve"},
-    {src:"/team1.jpg" ,position:"Co-organiser", name: "Heartfulness"},
 
-  ];
-  let user2 = [
-    {src:"/team2.jpg" , name: "Shan Rathod" , position:"Design"},
-    {src:"/team2.jpg" , name: "Shan Rathod" , position:"Design"},
-    {src:"/team2.jpg" , name: "Shan Rathod" , position:"Design"}
-  ];
+
+export default function Page() {
+  const [blogs,setBlogs] = useState(null);
+
+     useEffect(()=>{
+        fetch('http://localhost:1337/api/team1s')
+        .then(res=>{
+            return res.json()
+        })
+        .then(data =>{
+           setBlogs(data.data);
+        })
+     },[]);
+
+     const [blog,setBlog] = useState(null);
+     useEffect(()=>{
+        fetch('http://localhost:1337/api/team2s')
+        .then(res=>{
+            return res.json()
+        })
+        .then(data =>{
+           setBlog(data.data);
+        })
+     },[]);
+
   return (
     <div className='bg-black'>
       <div className='flex flex-col items-center'>
@@ -20,15 +38,16 @@ export default function Page() {
         <div className='border-b-4 w-80 pt-8'></div>
       </div>
       <div className='flex my-12 mx-auto justify-center gap-6'>
+      <div className='grid grid-cols-1 md:grid-cols-2 gap-16 p-16 mx-auto'>
        {
-        user.map((item, index)=>{ 
+        blogs?.map((item:any, index:any)=>{ 
           return(<div key={index} className='flex flex-row p-4 border rounded-md shadow-xl shadow-cyan-500/50'>
           <div>
-          <Image src={item.src} width={200} height={200} className='aspect-[1/1] rounded-xl object-cover' alt='oc'/>
+          <Image src={item.attributes.src} width={200} height={200} className='aspect-[1/1] rounded-xl object-cover' alt='oc'/>
           </div>
           <div className='flex flex-col items-center ml-4 py-2 my-auto'>
-            <h1 className='text-white text-3xl font-medium border-b-4 border-gray-500'>{item.position}</h1>
-            <h2 className='text-white text-xl pt-2 pb-4'>{item.name}</h2>
+            <h1 className='text-white text-3xl font-medium border-b-4 border-gray-500'>{item.attributes.position}</h1>
+            <h2 className='text-white text-xl pt-2 pb-4'>{item.attributes.name}</h2>
             <div className="flex space-x-5 sm:justify-center sm:mt-0">
               <a href="#" className="text-gray-500 hover:text-gray-900 bg-gray-100 rounded-full p-1 ">
                   <svg className="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 8 19">
@@ -54,20 +73,21 @@ export default function Page() {
         })
        }
       </div>
+      </div>
       <div >
         <div className='flex justify-center'>
         <h1 className='text-white pt-12 font-extrabold text-4xl border-b-4 pb-4 border-gray-400'>Heads of Department</h1>
         </div>
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-16 p-16 mx-auto'>
         {
-          user2.map((gap,index)=>{
+          blog?.map((gap:any,index:any)=>{
             return(
               <div key={index} className="flex justify-center">
           <div className='relative w-52 h-52'>
-            <Image src={gap.src} width={170} height={200} className='aspect-[9/12] object-cover' alt='team' />
+            <Image src={gap.attributes.src} width={170} height={200} className='aspect-[9/12] object-cover' alt='team' />
             <div className='absolute h-24 w-36 p-2 bg-white -bottom-12 -right-4'> 
-              <h1 className='text-xl font-bold text-red-500'>{gap.name}</h1>
-              <h2 className='text-xl font-bold'>{gap.position}</h2>
+              <h1 className='text-xl font-bold text-red-500'>{gap.attributes.name}</h1>
+              <h2 className='text-xl font-bold'>{gap.attributes.position}</h2>
               <h3>Icons</h3>
             </div>
           </div>
